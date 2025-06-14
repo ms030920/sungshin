@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>성신여대 분실물 찾기</title>
+  <style>
+    body { font-family: '맑은 고딕', Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8;}
+    header { background: #5a2a83; color: #fff; padding: 1em;}
+    nav { background: #eee; padding: 0.5em;}
+    nav a { margin-right: 1em; color: #5a2a83; text-decoration: none;}
+    main { max-width: 900px; margin: 2em auto; background: #fff; padding: 2em; border-radius: 8px; }
+    section { margin-bottom: 2em;}
+    label { display: block; margin-top: 1em;}
+    input, select, textarea { width: 100%; padding: 0.5em; margin-top: 0.5em; }
+    .found { color: green; font-weight: bold;}
+    .admin { color: #c00; font-weight: bold;}
+    .comment { background: #f1f1f1; padding: 0.5em; margin-top: 0.5em; border-radius: 4px;}
+    .btn { background: #5a2a83; color: #fff; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer;}
+    .btn-delete { background: #c00;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>성신여자대학교 분실물 찾기</h1>
+  </header>
+  <nav>
+    <a href="#find">분실물 찾기</a>
+    <a href="#report">분실물 올리기</a>
+    <a href="#login">로그인</a>
+    <a href="#admin" class="admin">관리자</a>
+  </nav>
+  <main>
+    <!-- 로그인/회원가입 -->
+    <section id="login">
+      <h2>로그인 / 회원가입</h2>
+      <form>
+        <label>학교 이메일 (@sungshin.ac.kr)
+          <input type="email" placeholder="yourid@sungshin.ac.kr" required>
+        </label>
+        <label>비밀번호
+          <input type="password" required>
+        </label>
+        <button type="submit" class="btn">로그인</button>
+        <button type="button" class="btn">회원가입</button>
+      </form>
+      <p style="color:gray;">* 실제 인증 및 메일 발송 기능은 백엔드 필요</p>
+    </section>
+
+    <!-- 분실물 찾기 게시판 -->
+    <section id="find">
+      <h2>분실물 찾기 게시판</h2>
+      <form>
+        <label>분실물 종류
+          <select>
+            <option>지갑</option>
+            <option>전자기기</option>
+            <option>책</option>
+            <option>기타</option>
+          </select>
+        </label>
+        <label>분실 위치 (교내 건물/장소명)
+          <input type="text" placeholder="예: 수정관 2층" required>
+        </label>
+        <label>분실물 설명
+          <textarea placeholder="분실물 특징, 색상 등"></textarea>
+        </label>
+        <button type="submit" class="btn">글 올리기</button>
+      </form>
+      <hr>
+      <div>
+        <h3>게시글 예시</h3>
+        <div>
+          <strong>[지갑]</strong> 파란색 지갑을 잃어버렸어요 (수정관 2층) 
+          <span class="found">[찾음]</span>
+          <div>
+            <small>2025-06-14 | 홍길동</small>
+            <button class="btn btn-delete admin">삭제(관리자)</button>
+          </div>
+          <div>
+            <h4>댓글</h4>
+            <div class="comment">수정관 2층에서 발견했습니다! (2025-06-14)</div>
+            <form>
+              <input type="text" placeholder="댓글을 입력하세요">
+              <button type="submit" class="btn">댓글 달기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 분실물 올리기 게시판 -->
+    <section id="report">
+      <h2>분실물 올리기 게시판</h2>
+      <form>
+        <label>분실물 종류
+          <select>
+            <option>지갑</option>
+            <option>전자기기</option>
+            <option>책</option>
+            <option>기타</option>
+          </select>
+        </label>
+        <label>발견 위치 (교내 건물/장소명)
+          <input type="text" placeholder="예: 성신관 2층" required>
+        </label>
+        <label>분실물 설명
+          <textarea placeholder="분실물 특징, 색상 등"></textarea>
+        </label>
+        <button type="submit" class="btn">글 올리기</button>
+      </form>
+      <hr>
+      <div>
+        <h3>게시글 예시</h3>
+        <div>
+          <strong>[지갑]</strong> 파란 지갑 성신관 2층에서 발견했어요 찾아가세요
+          <div>
+            <small>2025-06-14 | 김성신</small>
+            <button class="btn btn-delete admin">삭제(관리자)</button>
+          </div>
+          <div>
+            <h4>댓글</h4>
+            <div class="comment">주인 찾아갔습니다! (2025-06-14)</div>
+            <form>
+              <input type="text" placeholder="댓글을 입력하세요">
+              <button type="submit" class="btn">댓글 달기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 지도 (실제 지도 연동은 JS 필요) -->
+    <section id="map">
+      <h2>교내 지도에서 위치 선택</h2>
+      <div style="width:100%;height:300px;background:#ddd;text-align:center;line-height:300px;">
+        [지도 API 연동 영역]
+      </div>
+      <p style="color:gray;">* 실제 지도 기능은 JavaScript 및 외부 지도 API 필요</p>
+    </section>
+
+    <!-- 관리자 안내 -->
+    <section id="admin">
+      <h2>관리자 기능 안내</h2>
+      <ul>
+        <li>게시글/댓글 삭제 가능</li>
+        <li>분실물 상태(찾음 등) 변경 가능</li>
+        <li>이메일 알림 기능 (실제 구현은 백엔드 필요)</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
